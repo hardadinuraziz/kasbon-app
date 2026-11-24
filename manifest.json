@@ -1,0 +1,19 @@
+{
+  "name": "KasbonKu — Catatan Kasbon & Piutang",
+  "short_name": "KasbonKu",
+  "description": "Aplikasi pencatatan kasbon, cicilan, tagihan WhatsApp, dan nota digital offline-first untuk UMKM, karyawan, dan pribadi.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F7F6F2",
+  "theme_color": "#0F5C45",
+  "lang": "id",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
