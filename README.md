@@ -52,7 +52,7 @@ Lalu buka `http://localhost:8080`.
 1. Buka **Settings → Pages** pada repository GitHub ini.
 2. Pada **Build and deployment → Source**, pilih **Deploy from a branch**.
 3. Pilih branch `main` dan folder `/ (root)`, lalu klik **Save**.
-4. Aplikasi akan langsung aktif di `https://hardadinuraziz.github.io/kasbon/`.
+4. Aplikasi akan langsung aktif di `https://hardadinuraziz.github.io/kasbon-app/`.
 
 ## Privasi & Penyimpanan Data
 Seluruh data catatan kasbon disimpan secara lokal di browser perangkat Anda menggunakan `localStorage` dan tidak dikirim ke server eksternal mana pun. Gunakan fitur **Backup JSON** di menu **Laporan & Backup** secara berkala untuk menyimpan cadangan data Anda.
