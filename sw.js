@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kasbonku-v1';
+const CACHE_NAME = 'kasbonku-v2';
 const ASSETS = [
   './',
   './index.html',

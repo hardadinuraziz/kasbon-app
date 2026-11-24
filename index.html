@@ -3,293 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KasbonKu — Aplikasi Pencatatan Kasbon, Cicilan &amp; Nota Digital</title>
-  <meta name="description" content="Kelola catatan kasbon karyawan, pelanggan, dan pribadi dengan mudah. Dilengkapi fitur cicilan bertahap, pengingat WhatsApp otomatis, nota digital PNG, dan laporan offline.">
-  <meta name="theme-color" content="#0F5C45">
+  <title>KasbonKu — Buku Catatan Kasbon</title>
+  <meta name="description" content="Buku catatan kasbon digital minimalis: catat piutang, cicilan, tagih WhatsApp, dan nota PNG secara offline.">
+  <meta name="theme-color" content="#F3EFE6">
   <link rel="icon" type="image/svg+xml" href="./assets/icon.svg">
   <link rel="manifest" href="./manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-  <!-- Mobile Sticky Header -->
-  <header class="mobile-header">
-    <div class="brand-lockup">
-      <div class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 3h16v18l-3-2-2.5 2L12 19l-2.5 2L7 19l-3 2V3z"/>
-          <path d="M8 8h8"/>
-          <path d="M8 12h5"/>
-        </svg>
-      </div>
-      <div class="brand-text">
-        <div class="brand-name">KasbonKu</div>
-        <div class="brand-sub" id="mobileBusinessSub">Catatan Usaha</div>
-      </div>
-    </div>
-    <div class="mobile-header-actions">
-      <button type="button" class="icon-btn" id="mobileThemeBtn" aria-label="Ganti tema gelap atau terang" title="Ganti Tema"></button>
-      <button type="button" class="icon-btn" id="mobileSettingsBtn" aria-label="Pengaturan Profil Usaha" title="Pengaturan">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="3"/>
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-        </svg>
-      </button>
-    </div>
-  </header>
+  <!-- Ambient Paper & Soft Light Backdrop -->
+  <div class="ambient-scene" aria-hidden="true">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+    <div class="paper-rules"></div>
+  </div>
 
-  <div class="app-shell">
-    <!-- Desktop Sidebar -->
-    <aside class="sidebar" aria-label="Navigasi Utama">
-      <div class="brand-lockup">
-        <div class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 3h16v18l-3-2-2.5 2L12 19l-2.5 2L7 19l-3 2V3z"/>
-            <path d="M8 8h8"/>
-            <path d="M8 12h5"/>
-          </svg>
-        </div>
-        <div class="brand-text">
-          <div class="brand-name">KasbonKu</div>
-          <div class="brand-sub" id="sidebarBusinessSub">Catatan Usaha</div>
-        </div>
+  <!-- Floating Glass Top Navigation Bar -->
+  <header class="top-dock-wrap">
+    <div class="top-dock glass-panel">
+      <div class="dock-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-title">KasbonKu</span>
+        <span class="brand-sep" aria-hidden="true">/</span>
+        <span class="brand-biz" id="dockBusinessName">Buku Catatan</span>
       </div>
 
-      <div class="sidebar-cta">
-        <button type="button" class="btn btn-primary btn-full" id="sidebarNewKasbonBtn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 5v14M5 12h14"/>
-          </svg>
-          Catat Kasbon Baru
+      <nav class="dock-tabs" aria-label="Navigasi">
+        <button type="button" class="dock-tab active" data-view="beranda">
+          Kasbon <span class="tab-badge mono" id="navActiveCount">0</span>
         </button>
-      </div>
-
-      <nav class="nav-list">
-        <button type="button" class="nav-item active" data-view="beranda" id="nav-beranda">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 3h16v18l-3-2-2.5 2L12 19l-2.5 2L7 19l-3 2V3z"/>
-            <path d="M8 8h8"/>
-            <path d="M8 12h6"/>
-          </svg>
-          <span>Daftar Kasbon</span>
-          <span class="nav-count tabular" id="navActiveCount">0</span>
+        <button type="button" class="dock-tab" data-view="kontak">
+          Nama <span class="tab-badge mono" id="navContactCount">0</span>
         </button>
-
-        <button type="button" class="nav-item" data-view="kontak" id="nav-kontak">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
-          <span>Buku Nama</span>
-          <span class="nav-count tabular" id="navContactCount">0</span>
-        </button>
-
-        <button type="button" class="nav-item" data-view="mutasi" id="nav-mutasi">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="17 1 21 5 17 9"/>
-            <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
-            <polyline points="7 23 3 19 7 15"/>
-            <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
-          </svg>
-          <span>Riwayat Mutasi</span>
-        </button>
-
-        <button type="button" class="nav-item" data-view="laporan" id="nav-laporan">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 20V10"/>
-            <path d="M12 20V4"/>
-            <path d="M6 20v-6"/>
-          </svg>
-          <span>Laporan &amp; Backup</span>
-        </button>
+        <button type="button" class="dock-tab" data-view="mutasi">Mutasi</button>
+        <button type="button" class="dock-tab" data-view="laporan">Laporan</button>
       </nav>
 
-      <div class="sidebar-footer">
-        <button type="button" class="nav-item" id="sidebarSettingsBtn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <div class="dock-actions">
+        <button type="button" class="icon-glass-btn" id="themeToggleBtn" aria-label="Ganti Tema" title="Ganti Tema"></button>
+        <button type="button" class="icon-glass-btn" id="settingsOpenBtn" aria-label="Profil" title="Profil &amp; Rekening">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="3"/>
             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
           </svg>
-          <span>Profil Usaha</span>
         </button>
-
-        <button type="button" class="nav-item" id="sidebarThemeBtn">
-          <span id="sidebarThemeIcon" style="display:inline-flex;"></span>
-          <span id="sidebarThemeLabel">Mode Gelap</span>
+        <button type="button" class="btn-ink dock-add-btn" id="topNewKasbonBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+          <span>Catat</span>
         </button>
       </div>
-    </aside>
+    </div>
+  </header>
 
-    <!-- Main Workspace -->
-    <main class="main-content">
-      <div class="workspace-inner" id="appRoot">
-        <!-- Rendered dynamically by js/app.js -->
-      </div>
-    </main>
-  </div>
+  <!-- Main Centered Notebook Column -->
+  <main class="notebook-stage">
+    <div class="notebook-column" id="appRoot">
+      <!-- Rendered dynamically by js/app.js -->
+    </div>
+  </main>
 
-  <!-- Mobile Floating Action Button -->
-  <button type="button" class="mobile-fab" id="mobileNewKasbonBtn" aria-label="Catat Kasbon Baru">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 5v14M5 12h14"/>
-    </svg>
-    Catat Kasbon
-  </button>
-
-  <!-- Mobile Bottom Navigation -->
-  <nav class="mobile-bottom-nav" aria-label="Navigasi Bawah">
-    <button type="button" class="bottom-nav-btn active" data-view="beranda">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 3h16v18l-3-2-2.5 2L12 19l-2.5 2L7 19l-3 2V3z"/>
-        <path d="M8 8h8M8 12h6"/>
-      </svg>
-      <span>Kasbon</span>
-    </button>
-    <button type="button" class="bottom-nav-btn" data-view="kontak">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-      </svg>
-      <span>Buku Nama</span>
-    </button>
-    <button type="button" class="bottom-nav-btn" data-view="mutasi">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="17 1 21 5 17 9"/>
-        <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
-        <polyline points="7 23 3 19 7 15"/>
-        <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
-      </svg>
-      <span>Mutasi</span>
-    </button>
-    <button type="button" class="bottom-nav-btn" data-view="laporan">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 20V10M12 20V4M6 20v-6"/>
-      </svg>
-      <span>Laporan</span>
-    </button>
+  <!-- Mobile Floating Glass Bottom Dock -->
+  <nav class="mobile-dock-wrap" aria-label="Navigasi Mobile">
+    <div class="mobile-dock glass-panel">
+      <button type="button" class="m-tab active" data-view="beranda" aria-label="Kasbon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        <span>Kasbon</span>
+      </button>
+      <button type="button" class="m-tab" data-view="kontak" aria-label="Nama">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+        </svg>
+        <span>Nama</span>
+      </button>
+      <button type="button" class="m-add-fab" id="mobileNewKasbonBtn" aria-label="Catat Kasbon Baru" title="Catat Kasbon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+      </button>
+      <button type="button" class="m-tab" data-view="mutasi" aria-label="Mutasi">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 16V4m0 0-3 3m3-3 3 3"/>
+          <path d="M17 8v12m0 0 3-3m-3 3-3-3"/>
+        </svg>
+        <span>Mutasi</span>
+      </button>
+      <button type="button" class="m-tab" data-view="laporan" aria-label="Laporan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 20V10M12 20V4M6 20v-6"/>
+        </svg>
+        <span>Laporan</span>
+      </button>
+    </div>
   </nav>
 
   <!-- ======================================================================
-       MODALS
+       MODALS (Frosted Glass Sheets)
        ====================================================================== -->
 
-  <!-- 1. Modal Tambah / Edit Kasbon -->
+  <!-- 1. Catat / Edit Kasbon -->
   <div class="modal-backdrop" id="kasbonModal" role="dialog" aria-modal="true" aria-labelledby="kasbonModalTitle">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <h2 class="modal-title" id="kasbonModalTitle">Catat Kasbon Baru</h2>
-        <button type="button" class="icon-btn" data-close-modal="kasbonModal" aria-label="Tutup">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    <div class="modal-sheet glass-modal">
+      <div class="modal-head">
+        <h2 class="modal-title" id="kasbonModalTitle">Catat Kasbon</h2>
+        <button type="button" class="icon-glass-btn" data-close-modal="kasbonModal" aria-label="Tutup">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
       </div>
       <form id="kasbonForm" novalidate>
         <div class="modal-body">
           <input type="hidden" id="kbEditId">
 
-          <div class="form-row-2">
-            <div class="form-group">
-              <label class="form-label" for="kbBorrowerName">Nama Peminjam <span class="req">*</span></label>
-              <input type="text" id="kbBorrowerName" class="form-control" list="borrowerSuggestions" placeholder="Contoh: Budi Santoso" required autocomplete="off">
+          <div class="field-row">
+            <div class="field">
+              <label for="kbBorrowerName">Nama</label>
+              <input type="text" id="kbBorrowerName" class="input-glass" list="borrowerSuggestions" placeholder="Budi Santoso" required autocomplete="off">
               <datalist id="borrowerSuggestions"></datalist>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="kbPhone">No. WhatsApp</label>
-              <input type="tel" id="kbPhone" class="form-control" placeholder="0812xxxxxxxx">
+            <div class="field">
+              <label for="kbPhone">WhatsApp</label>
+              <input type="tel" id="kbPhone" class="input-glass mono" placeholder="0812xxxx">
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="form-label" for="kbAmount">Nominal Kasbon <span class="req">*</span></label>
-            <div class="currency-input-wrap">
-              <span class="currency-prefix">Rp</span>
-              <input type="text" id="kbAmount" class="form-control tabular" inputmode="numeric" placeholder="0" required autocomplete="off">
+          <div class="field">
+            <label for="kbAmount">Nominal</label>
+            <div class="amount-box">
+              <span class="amount-rp">Rp</span>
+              <input type="text" id="kbAmount" class="input-glass amount-input mono" inputmode="numeric" placeholder="0" required autocomplete="off">
             </div>
-            <div class="quick-chips" aria-label="Tambah cepat nominal">
-              <button type="button" class="quick-chip" data-add-amount="50000">+50rb</button>
-              <button type="button" class="quick-chip" data-add-amount="100000">+100rb</button>
-              <button type="button" class="quick-chip" data-add-amount="250000">+250rb</button>
-              <button type="button" class="quick-chip" data-add-amount="500000">+500rb</button>
-              <button type="button" class="quick-chip" data-add-amount="1000000">+1jt</button>
+            <div class="chip-row">
+              <button type="button" class="chip-btn" data-add-amount="50000">+50rb</button>
+              <button type="button" class="chip-btn" data-add-amount="100000">+100rb</button>
+              <button type="button" class="chip-btn" data-add-amount="250000">+250rb</button>
+              <button type="button" class="chip-btn" data-add-amount="500000">+500rb</button>
+              <button type="button" class="chip-btn" data-add-amount="1000000">+1jt</button>
             </div>
           </div>
 
-          <div class="form-row-2">
-            <div class="form-group">
-              <label class="form-label" for="kbCategory">Kategori</label>
-              <select id="kbCategory" class="form-control">
+          <div class="field">
+            <label for="kbDescription">Keperluan</label>
+            <input type="text" id="kbDescription" class="input-glass" placeholder="Kasbon gaji, sembako, operasional..." required>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="kbCategory">Kategori</label>
+              <select id="kbCategory" class="input-glass">
                 <option value="karyawan">Karyawan</option>
                 <option value="pelanggan">Pelanggan</option>
-                <option value="teman">Teman / Keluarga</option>
+                <option value="teman">Teman</option>
                 <option value="operasional">Operasional</option>
               </select>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="kbDate">Tanggal Kasbon <span class="req">*</span></label>
-              <input type="date" id="kbDate" class="form-control tabular" required>
+            <div class="field">
+              <label for="kbDate">Tanggal</label>
+              <input type="date" id="kbDate" class="input-glass mono" required>
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="form-label" for="kbDescription">Keperluan / Keterangan <span class="req">*</span></label>
-            <input type="text" id="kbDescription" class="form-control" placeholder="Contoh: Kasbon gaji, belanja sembako, uang jalan" required>
-          </div>
-
-          <div class="form-row-2">
-            <div class="form-group">
-              <label class="form-label" for="kbDueDate">Jatuh Tempo (Opsional)</label>
-              <input type="date" id="kbDueDate" class="form-control tabular">
+          <div class="field-row">
+            <div class="field">
+              <label for="kbDueDate">Jatuh Tempo</label>
+              <input type="date" id="kbDueDate" class="input-glass mono">
             </div>
-            <div class="form-group">
-              <label class="form-label" for="kbNotes">Catatan Tambahan</label>
-              <input type="text" id="kbNotes" class="form-control" placeholder="Misal: potong gaji tgl 28">
+            <div class="field">
+              <label for="kbNotes">Catatan</label>
+              <input type="text" id="kbNotes" class="input-glass" placeholder="Opsional">
             </div>
           </div>
 
           <div class="form-error" id="kbFormError" role="alert"></div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-close-modal="kasbonModal">Batal</button>
-          <button type="submit" class="btn btn-primary" id="kbSubmitBtn">Simpan Kasbon</button>
+        <div class="modal-foot">
+          <button type="button" class="btn-glass" data-close-modal="kasbonModal">Batal</button>
+          <button type="submit" class="btn-ink" id="kbSubmitBtn">Simpan</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- 2. Modal Bayar / Cicil -->
+  <!-- 2. Bayar / Cicil -->
   <div class="modal-backdrop" id="paymentModal" role="dialog" aria-modal="true" aria-labelledby="paymentModalTitle">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <h2 class="modal-title" id="paymentModalTitle">Catat Pembayaran / Cicilan</h2>
-        <button type="button" class="icon-btn" data-close-modal="paymentModal" aria-label="Tutup">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    <div class="modal-sheet glass-modal">
+      <div class="modal-head">
+        <h2 class="modal-title" id="paymentModalTitle">Bayar / Cicil</h2>
+        <button type="button" class="icon-glass-btn" data-close-modal="paymentModal" aria-label="Tutup">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
       </div>
       <form id="paymentForm" novalidate>
         <div class="modal-body">
           <input type="hidden" id="payRecordId">
-          <div class="summary-callout" id="paySummaryCallout"></div>
+          <div class="mini-ledger-box" id="paySummaryCallout"></div>
 
-          <div class="form-group">
-            <label class="form-label" for="payAmount">Nominal Dibayar <span class="req">*</span></label>
-            <div class="currency-input-wrap">
-              <span class="currency-prefix">Rp</span>
-              <input type="text" id="payAmount" class="form-control tabular" inputmode="numeric" placeholder="0" required autocomplete="off">
+          <div class="field">
+            <label for="payAmount">Nominal Bayar</label>
+            <div class="amount-box">
+              <span class="amount-rp">Rp</span>
+              <input type="text" id="payAmount" class="input-glass amount-input mono" inputmode="numeric" placeholder="0" required autocomplete="off">
             </div>
-            <div class="quick-chips" id="payQuickChips"></div>
+            <div class="chip-row" id="payQuickChips"></div>
           </div>
 
-          <div class="form-row-2">
-            <div class="form-group">
-              <label class="form-label" for="payDate">Tanggal Bayar</label>
-              <input type="date" id="payDate" class="form-control tabular" required>
+          <div class="field-row">
+            <div class="field">
+              <label for="payDate">Tanggal</label>
+              <input type="date" id="payDate" class="input-glass mono" required>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="payMethod">Metode Pembayaran</label>
-              <select id="payMethod" class="form-control">
+            <div class="field">
+              <label for="payMethod">Metode</label>
+              <select id="payMethod" class="input-glass">
                 <option value="Tunai">Tunai</option>
                 <option value="Transfer Bank">Transfer Bank</option>
                 <option value="QRIS / E-Wallet">QRIS / E-Wallet</option>
@@ -298,141 +231,135 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="form-label" for="payNote">Catatan Pembayaran (Opsional)</label>
-            <input type="text" id="payNote" class="form-control" placeholder="Contoh: Cicilan ke-2 via transfer BCA">
+          <div class="field">
+            <label for="payNote">Catatan</label>
+            <input type="text" id="payNote" class="input-glass" placeholder="Opsional">
           </div>
 
           <div class="form-error" id="payFormError" role="alert"></div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-close-modal="paymentModal">Batal</button>
-          <button type="submit" class="btn btn-primary">Simpan Pembayaran</button>
+        <div class="modal-foot">
+          <button type="button" class="btn-glass" data-close-modal="paymentModal">Batal</button>
+          <button type="submit" class="btn-ink">Simpan</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- 3. Modal Detail & Riwayat Pembayaran -->
+  <!-- 3. Detail & Riwayat Cicilan -->
   <div class="modal-backdrop" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailModalTitle">
-    <div class="modal-dialog wide">
-      <div class="modal-header">
-        <h2 class="modal-title" id="detailModalTitle">Detail Kasbon</h2>
-        <button type="button" class="icon-btn" data-close-modal="detailModal" aria-label="Tutup">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    <div class="modal-sheet glass-modal wide">
+      <div class="modal-head">
+        <h2 class="modal-title" id="detailModalTitle">Detail</h2>
+        <button type="button" class="icon-glass-btn" data-close-modal="detailModal" aria-label="Tutup">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
       </div>
       <div class="modal-body" id="detailModalBody"></div>
-      <div class="modal-footer" id="detailModalFooter"></div>
+      <div class="modal-foot" id="detailModalFooter"></div>
     </div>
   </div>
 
-  <!-- 4. Modal Tagih WhatsApp -->
+  <!-- 4. WhatsApp -->
   <div class="modal-backdrop" id="waModal" role="dialog" aria-modal="true" aria-labelledby="waModalTitle">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <h2 class="modal-title" id="waModalTitle">Kirim Pengingat WhatsApp</h2>
-        <button type="button" class="icon-btn" data-close-modal="waModal" aria-label="Tutup">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    <div class="modal-sheet glass-modal">
+      <div class="modal-head">
+        <h2 class="modal-title" id="waModalTitle">Tagih WhatsApp</h2>
+        <button type="button" class="icon-glass-btn" data-close-modal="waModal" aria-label="Tutup">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
       </div>
       <div class="modal-body">
-        <div class="form-group" id="waToneGroup">
-          <span class="form-label">Gaya Bahasa Pesan</span>
-          <div class="tone-tabs">
-            <button type="button" class="tone-tab active" data-wa-tone="sopan">Sopan &amp; Ramah</button>
-            <button type="button" class="tone-tab" data-wa-tone="formal">Formal Kantor</button>
-            <button type="button" class="tone-tab" data-wa-tone="santai">Santai (Teman)</button>
-          </div>
+        <div class="seg-control" id="waToneGroup">
+          <button type="button" class="seg-btn active" data-wa-tone="sopan">Sopan</button>
+          <button type="button" class="seg-btn" data-wa-tone="formal">Formal</button>
+          <button type="button" class="seg-btn" data-wa-tone="santai">Santai</button>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="waPhoneInput">Nomor WhatsApp Tujuan</label>
-          <input type="tel" id="waPhoneInput" class="form-control" placeholder="0812xxxxxxxx (kosongkan jika hanya salin)">
+        <div class="field">
+          <label for="waPhoneInput">Nomor</label>
+          <input type="tel" id="waPhoneInput" class="input-glass mono" placeholder="0812xxxx">
         </div>
-        <div class="form-group">
-          <label class="form-label" for="waMessagePreview">Pratinjau Pesan (Bisa diedit)</label>
-          <textarea id="waMessagePreview" class="form-control" rows="8"></textarea>
+        <div class="field">
+          <label for="waMessagePreview">Pesan</label>
+          <textarea id="waMessagePreview" class="input-glass" rows="7"></textarea>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" id="waCopyBtn">Salin Teks</button>
-        <button type="button" class="btn btn-wa" id="waSendBtn">Buka WhatsApp</button>
+      <div class="modal-foot">
+        <button type="button" class="btn-glass" id="waCopyBtn">Salin</button>
+        <button type="button" class="btn-wa" id="waSendBtn">Kirim WA</button>
       </div>
     </div>
   </div>
 
-  <!-- 5. Modal Struk / Nota Digital -->
+  <!-- 5. Nota Digital PNG -->
   <div class="modal-backdrop" id="receiptModal" role="dialog" aria-modal="true" aria-labelledby="receiptModalTitle">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <h2 class="modal-title" id="receiptModalTitle">Nota Kasbon Digital</h2>
-        <button type="button" class="icon-btn" data-close-modal="receiptModal" aria-label="Tutup">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    <div class="modal-sheet glass-modal">
+      <div class="modal-head">
+        <h2 class="modal-title" id="receiptModalTitle">Nota Digital</h2>
+        <button type="button" class="icon-glass-btn" data-close-modal="receiptModal" aria-label="Tutup">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
       </div>
       <div class="modal-body">
-        <div class="receipt-preview-wrap">
-          <canvas id="receiptCanvas" aria-label="Pratinjau Nota Kasbon Digital"></canvas>
+        <div class="receipt-stage">
+          <canvas id="receiptCanvas" aria-label="Nota Digital"></canvas>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-close-modal="receiptModal">Tutup</button>
-        <button type="button" class="btn btn-primary" id="downloadReceiptBtn">Simpan Gambar (PNG)</button>
+      <div class="modal-foot">
+        <button type="button" class="btn-glass" data-close-modal="receiptModal">Tutup</button>
+        <button type="button" class="btn-ink" id="downloadReceiptBtn">Unduh PNG</button>
       </div>
     </div>
   </div>
 
-  <!-- 6. Modal Pengaturan Profil Usaha -->
+  <!-- 6. Profil Usaha -->
   <div class="modal-backdrop" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsModalTitle">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <h2 class="modal-title" id="settingsModalTitle">Profil Usaha &amp; Info Pembayaran</h2>
-        <button type="button" class="icon-btn" data-close-modal="settingsModal" aria-label="Tutup">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    <div class="modal-sheet glass-modal">
+      <div class="modal-head">
+        <h2 class="modal-title" id="settingsModalTitle">Profil Buku</h2>
+        <button type="button" class="icon-glass-btn" data-close-modal="settingsModal" aria-label="Tutup">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
       </div>
       <form id="settingsForm">
         <div class="modal-body">
-          <div class="form-group">
-            <label class="form-label" for="setBusinessName">Nama Usaha / Pemilik</label>
-            <input type="text" id="setBusinessName" class="form-control" placeholder="Contoh: Warung Berkah / CV Maju Jaya">
+          <div class="field">
+            <label for="setBusinessName">Nama Usaha / Pemilik</label>
+            <input type="text" id="setBusinessName" class="input-glass" placeholder="Warung Berkah">
           </div>
-          <div class="form-group">
-            <label class="form-label" for="setPaymentInfo">Info Rekening / E-Wallet (Tampil di WA &amp; Nota)</label>
-            <textarea id="setPaymentInfo" class="form-control" rows="4" placeholder="BCA 1234567890 a.n. Nama Anda&#10;DANA / GoPay: 0812-xxxx-xxxx"></textarea>
+          <div class="field">
+            <label for="setPaymentInfo">Rekening / E-Wallet</label>
+            <textarea id="setPaymentInfo" class="input-glass" rows="4" placeholder="BCA 1234567890 a.n. Nama&#10;DANA / GoPay: 0812-xxxx-xxxx"></textarea>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-close-modal="settingsModal">Batal</button>
-          <button type="submit" class="btn btn-primary">Simpan Pengaturan</button>
+        <div class="modal-foot">
+          <button type="button" class="btn-glass" data-close-modal="settingsModal">Batal</button>
+          <button type="submit" class="btn-ink">Simpan</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- 7. Modal Konfirmasi -->
+  <!-- 7. Konfirmasi -->
   <div class="modal-backdrop" id="confirmModal" role="dialog" aria-modal="true" aria-labelledby="confirmModalTitle">
-    <div class="modal-dialog" style="max-width:420px;">
-      <div class="modal-header">
+    <div class="modal-sheet glass-modal compact">
+      <div class="modal-head">
         <h2 class="modal-title" id="confirmModalTitle">Konfirmasi</h2>
-        <button type="button" class="icon-btn" data-close-modal="confirmModal" aria-label="Tutup">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        <button type="button" class="icon-glass-btn" data-close-modal="confirmModal" aria-label="Tutup">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
       </div>
       <div class="modal-body">
-        <p id="confirmModalMessage" style="color:var(--ink-secondary);"></p>
+        <p id="confirmModalMessage" class="confirm-text"></p>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-close-modal="confirmModal">Batal</button>
-        <button type="button" class="btn btn-danger-soft" id="confirmModalOkBtn">Ya, Lanjutkan</button>
+      <div class="modal-foot">
+        <button type="button" class="btn-glass" data-close-modal="confirmModal">Batal</button>
+        <button type="button" class="btn-danger" id="confirmModalOkBtn">Lanjutkan</button>
       </div>
     </div>
   </div>
 
-  <!-- Hidden File Input for JSON Import -->
   <input type="file" id="jsonImportInput" accept="application/json,.json" class="sr-only">
-
-  <!-- Toast Container -->
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
   <script defer src="./js/utils.js"></script>
